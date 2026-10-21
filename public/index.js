@@ -1,10 +1,13 @@
-const daftarProduk = document.querySelector('#daftarProduk');
-const statusProduk = document.querySelector('#statusProduk');
+const DaftarProduk = document.querySelector('#DaftarProduk');
+const StatusProduk = document.querySelector('#StatusProduk');
+
+console.log (DaftarProduk);
+console.log (StatusProduk);
 
 async function ambilProduk() {
   // 1. Tampilkan loading
-  statusProduk.textContent = 'Memuat data produk...';
-  statusProduk.hidden = false;
+  StatusProduk.textContent = 'Memuat data produk...';
+  StatusProduk.hidden = false;
 
   try {
     // 2. Kirim request dan tunggu response
@@ -15,19 +18,19 @@ async function ambilProduk() {
     const data = await response.json();
 
     // 4. Tampilkan ke halaman
-    tampilkanProduk(data.products);
+    tampilkanProduk(data.produk);
 
     // 5. Sembunyikan loading
-    statusProduk.hidden = true;
+    StatusProduk.hidden = true;
   } catch (error) {
     // 6. Tampilkan pesan error
-    statusProduk.textContent = 'Gagal memuat data. Periksa koneksi lalu coba lagi.';
-    statusProduk.hidden = false;
+    StatusProduk.textContent = 'Gagal memuat data. Periksa koneksi lalu coba lagi.';
+    StatusProduk.hidden = false;
   }
 }
 
 function tampilkanProduk(daftar) {
-  daftarProduk.textContent = '';  // kosongkan dulu
+  DaftarProduk.textContent = '';  // kosongkan dulu
 
   daftar.forEach(function (produk) {
     const kartu = document.createElement('div');
@@ -41,7 +44,7 @@ function tampilkanProduk(daftar) {
 
     kartu.appendChild(nama);
     kartu.appendChild(harga);
-    daftarProduk.appendChild(kartu);
+    DaftarProduk.appendChild(kartu);
   });
 }
 

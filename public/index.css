@@ -32,6 +32,24 @@ section {
     padding: 16px;
 }
 
+.form-group { margin-bottom: 16px; }
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.error-text { color: #c0392b; }
+
 button{
     padding: 10px 20px;
     border: none;
@@ -41,9 +59,10 @@ button{
     cursor: pointer;
 }
 
-#hasilpesanan{
-    margin-top: 16px;
-    padding: 12px;
-    background: black;
-    border-radius: 6px;
+#hasilpesanan {
+  margin-top: 16px;
+  padding: 12px;
+  background: black;
+  color: #fcf9f9;
+  border-radius: 6px;
 }

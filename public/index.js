@@ -10,6 +10,13 @@ async function AmbilProduk() {
         //mengirim request dan menunggu repons
         const response = await fetch('https://dummyjson.com/products');
         if (!response.ok) {
-        throw new Error(`Gagal mengambil data:);
+        throw new Error('Gagal mengambil data');
+
+        //mengubah data menjadi json
+        const data = await response.json();
+
+        //tampilkan halaman
+        TampillanProduk(data.products);
+
         
     

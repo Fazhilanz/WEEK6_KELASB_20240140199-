@@ -49,3 +49,71 @@ function tampilkanProduk(daftar) {
 }
 
 ambilProduk();
+
+// ===== TUGAS 2: FORM PEMESANAN =====
+const formPesanan = document.querySelector('#formPesanan');
+const namaPemesan = document.querySelector('#namaPemesan');
+const inputProduk = document.querySelector('#inputProduk');
+const inputJumlah = document.querySelector('#inputJumlah');
+const errorNama = document.querySelector('#errorNama');
+const errorProduk = document.querySelector('#errorProduk');
+const errorJumlah = document.querySelector('#errorJumlah');
+const hasilPesanan = document.querySelector('#hasilPesanan');
+
+function validasiForm() {
+  let valid = true;
+
+  // bersihkan pesan error lama
+  errorNama.textContent = '';
+  errorProduk.textContent = '';
+  errorJumlah.textContent = '';
+
+  if (namaPemesan.value.trim().length < 3) {
+    errorNama.textContent = 'Nama pemesan minimal 3 karakter.';
+    valid = false;
+  }
+
+  if (inputProduk.value.trim().length < 3) {
+    errorProduk.textContent = 'Nama produk minimal 3 karakter.';
+    valid = false;
+  }
+
+  const jumlah = Number(inputJumlah.value);
+  if (!Number.isInteger(jumlah) || jumlah < 1) {
+    errorJumlah.textContent = 'Jumlah harus berupa angka minimal 1.';
+    valid = false;
+  }
+
+  return valid;
+}
+
+// Event: submit
+formPesanan.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  if (!validasiForm()) {
+    hasilPesanan.hidden = true;
+    return;
+  }
+
+  const nama = namaPemesan.value.trim();
+  const produk = inputProduk.value.trim();
+  const jumlah = Number(inputJumlah.value);
+
+  hasilPesanan.textContent =
+    'Terima kasih, ' + nama + '! Pesanan ' + jumlah + ' x ' + produk + ' berhasil dibuat.';
+  hasilPesanan.hidden = false;
+
+  formPesanan.reset();
+});
+
+// Event: input (pesan error hilang saat pengguna mulai memperbaiki)
+namaPemesan.addEventListener('input', function () {
+  errorNama.textContent = '';
+});
+inputProduk.addEventListener('input', function () {
+  errorProduk.textContent = '';
+});
+inputJumlah.addEventListener('input', function () {
+  errorJumlah.textContent = '';
+});

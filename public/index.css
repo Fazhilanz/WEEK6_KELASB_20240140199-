@@ -31,3 +31,19 @@ section {
     border-radius: 8px;
     padding: 16px;
 }
+
+button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: rgb(162, 154, 154);
+    color: black;
+    cursor: pointer;
+}
+
+#hasilpesanan{
+    margin-top: 16px;
+    padding: 12px;
+    background: black;
+    border-radius: 6px;
+}
